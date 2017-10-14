@@ -1813,3 +1813,218 @@ Processing by MoviesController#index as HTML
   [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
   Rendered movies/index.html.haml within layouts/application (5.4ms)
 Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 0.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (9.5ms)[0m  [1mCREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "rating" varchar, "description" text, "release_date" datetime, "created_at" datetime, "updated_at" datetime, "director" varchar) [0m
+  [1m[35m (9.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (9.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (7.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20171012093739')
+  [1m[36m (8.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20111119180638')[0m
+
+
+Started GET "/" for 147.11.252.42 at 2017-10-14 03:18:12 +0000
+
+
+Started GET "/movies" for 147.11.252.42 at 2017-10-14 03:18:12 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (28.8ms)
+Completed 200 OK in 347ms (Views: 301.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/application.self-2b9b4ceb35a4568bfbe3001eb6cf7d691787c8ec9b2018eecbc3c235cc74b7a4.css?body=1" for 147.11.252.42 at 2017-10-14 03:18:12 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 147.11.252.42 at 2017-10-14 03:18:12 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 147.11.252.42 at 2017-10-14 03:18:12 +0000
+
+
+Started GET "/assets/application.self-ac4347b135ab8935f2dd20089f2acc8bec1d6b2ad528a80fcb03cd445dbd4d27.js?body=1" for 147.11.252.42 at 2017-10-14 03:18:12 +0000
+
+
+Started GET "/movies/3" for 147.11.252.42 at 2017-10-14 03:18:15 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (5.9ms)
+Completed 200 OK in 36ms (Views: 22.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/director/3" for 147.11.252.42 at 2017-10-14 03:18:19 +0000
+Processing by MoviesController#director as HTML
+  Parameters: {"id"=>"3"}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `params' for #<Class:0x00000004bbad88>):
+  app/models/movie.rb:7:in `similar'
+  app/controllers/movies_controller.rb:72:in `director'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (33.7ms)
+
+
+Started GET "/director/3" for 147.11.252.42 at 2017-10-14 03:19:07 +0000
+Processing by MoviesController#director as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."director" = ?  [["director", "a"]]
+  Rendered movies/director.html.haml within layouts/application (4.5ms)
+Completed 200 OK in 24ms (Views: 16.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/movies" for 147.11.252.42 at 2017-10-14 03:19:27 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (4.2ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/movies/6" for 147.11.252.42 at 2017-10-14 03:19:30 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 6]]
+  Rendered movies/show.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/director/6" for 147.11.252.42 at 2017-10-14 03:19:33 +0000
+Processing by MoviesController#director as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered movies/director.html.haml within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `each' for false:FalseClass):
+    12:       %th Director
+    13:       %th More Info
+    14:   %tbody
+    15:     - @movies.each do |movie|
+    16:       %tr
+    17:         %td= movie.title 
+    18:         %td= movie.rating
+  app/views/movies/director.html.haml:15:in `_app_views_movies_director_html_haml___1668497215138810598_70311180112900'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (99.6ms)
+
+
+Started GET "/director/6" for 147.11.252.42 at 2017-10-14 03:20:36 +0000
+Processing by MoviesController#director as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 6]]
+  Rendered movies/director.html.haml within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.8ms)
+
+ActionView::Template::Error (undefined method `each' for false:FalseClass):
+    12:       %th Director
+    13:       %th More Info
+    14:   %tbody
+    15:     - @movies.each do |movie|
+    16:       %tr
+    17:         %td= movie.title 
+    18:         %td= movie.rating
+  app/views/movies/director.html.haml:15:in `_app_views_movies_director_html_haml___1668497215138810598_70311180112900'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (33.8ms)
+
+
+Started GET "/movies/1" for 147.11.252.42 at 2017-10-14 03:21:13 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered movies/show.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/director/1" for 147.11.252.42 at 2017-10-14 03:21:14 +0000
+Processing by MoviesController#director as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "a"]]
+  Rendered movies/director.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/director/1" for 147.11.252.42 at 2017-10-14 03:21:59 +0000
+Processing by MoviesController#director as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Redirected to https://cs169-deduq-deduq.c9users.io/movies
+Completed 302 Found in 9ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/movies" for 147.11.252.42 at 2017-10-14 03:21:59 +0000
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')
+  Rendered movies/index.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 16ms (Views: 15.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/movies" for 147.11.252.42 at 2017-10-14 03:22:25 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (8.2ms)
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/movies/5" for 147.11.252.42 at 2017-10-14 03:22:27 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered movies/show.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/director/5" for 147.11.252.42 at 2017-10-14 03:22:29 +0000
+Processing by MoviesController#director as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", "5"]]
+Redirected to https://cs169-deduq-deduq.c9users.io/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/movies" for 147.11.252.42 at 2017-10-14 03:22:29 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (6.2ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/movies/9" for 147.11.252.42 at 2017-10-14 03:22:34 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered movies/show.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/director/9" for 147.11.252.42 at 2017-10-14 03:22:35 +0000
+Processing by MoviesController#director as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", "9"]]
+Redirected to https://cs169-deduq-deduq.c9users.io/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/movies" for 147.11.252.42 at 2017-10-14 03:22:35 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 122ms (Views: 119.9ms | ActiveRecord: 0.4ms)

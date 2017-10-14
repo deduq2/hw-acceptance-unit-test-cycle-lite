@@ -4,7 +4,12 @@ class Movie < ActiveRecord::Base
   end
   
   def self.similar id
-    director_name = Movie.find(id).director
-    Movie.where(director: director_name)
+    movie = Movie.find(id)
+    director_name = movie.director
+    if !director_name or director_name == ''
+      false
+    else
+      Movie.where(director: director_name)
+    end
   end
 end
